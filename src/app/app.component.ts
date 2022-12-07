@@ -54,11 +54,14 @@ logout() {
 }
 
 logged(){
-  if(this.ia!=null){
+  if(this.yourSharedService.id){
     this.isGet=true;
-    console.log(this.isGet)
+    
    }
-   return true;
+   console.log("Logged number"+this.ia)
+   console.log("Logged In Status"+this.isGet)
+   return this.isGet;
+   
 }
 
   

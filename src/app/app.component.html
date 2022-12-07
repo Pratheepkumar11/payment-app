@@ -13,7 +13,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
-         
+          <div *ngIf="logged()">
           <li class="nav-item dropdown"  >
             <a class="nav-link dropdown-toggle"   role="button" data-bs-toggle="dropdown" aria-expanded="false" [class.active]="router.isActive('addfunds', true) || router.isActive('fundTransfer', true)" >
                 Wallet
@@ -28,7 +28,7 @@
            
             </ul>
           </li>
-        
+        </div>
        
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
