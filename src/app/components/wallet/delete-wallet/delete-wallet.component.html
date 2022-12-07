@@ -1,0 +1,53 @@
+
+
+<div style="text-align: center">
+    <form  [formGroup]=" deleteform"  (ngSubmit)="onSubmit(deleteform.value)">
+        
+        <h1 class="display-1">Delete Wallet</h1><br>
+
+        
+        <div class="p-inputgroup " >
+            
+            <span class="p-inputgroup-addon"><i class="pi pi-star-fill"></i></span>
+            <input type="text" pInputText placeholder="User Id"  formControlName="id"  >
+        </div>
+            <p-message severity="error" [text]="deleteform.controls['id'].errors['required'] ? 'id is required' : deleteform.controls['id'].errors['minlength'] ? 'Must be longer than 2' : deleteform.controls['id'].errors['pattern'] ? 'Numbers only' :deleteform.controls['id'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+            *ngIf="!deleteform.controls['id'].valid&&deleteform.controls['id'].touched" ></p-message>
+    
+        <br>
+       
+       
+
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-eye-slash"></i></span>
+            <input type="password" pInputText placeholder="User Password" formControlName="password" >   </div>
+            <p-message severity="error" [text]="deleteform.controls['password'].errors['required'] ? 'Password is required' : deleteform.controls['password'].errors['minlength'] ? 'Must be longer than 2' : deleteform.controls['password'].errors['strong'] ? ' Must have at least one number, one lowercase and one uppercase letter.' :deleteform.controls['password'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+            *ngIf="!deleteform.controls['password'].valid&&deleteform.controls['password'].touched" ></p-message>    
+        <br>
+
+       <br>
+
+      <div>
+
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-button  icon="pi pi-check" label="Delete"  type="submit" value="submit" [disabled]="!deleteform.valid"></p-button>
+
+
+
+
+
+
+
+
+</div>
+</form>
+
+</div>
+
+<p-toast 
+      position="top-right" 
+      key="topright" 
+      life='50000'>
+</p-toast>
+    

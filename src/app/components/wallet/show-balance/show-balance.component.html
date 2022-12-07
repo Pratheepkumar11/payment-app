@@ -1,0 +1,35 @@
+<div style="text-align: center">
+    <form [formGroup]=" showbalance"  (ngSubmit)="onSubmit(showbalance.value)">
+        <h6 class="display-6">Show Account Balance</h6><br>
+
+        <div class="p-inputgroup"> 
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+              </span>       
+            <span class="p-float-label">
+                <input type="text" id="inputgroup" pInputText formControlName="id"  name='id' [(ngModel)]="ia"  />
+                <label for="inputgroup">User Id</label>
+              </span>
+        </div>
+        <p-message severity="error" [text]="showbalance.controls['id'].errors['required'] ? 'id is required' : showbalance.controls['id'].errors['minlength'] ? 'Must be longer than 2' : showbalance.controls['id'].errors['pattern'] ? 'Numbers only' :showbalance.controls['id'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+        *ngIf="!showbalance.controls['id'].valid&&showbalance.controls['id'].touched" ></p-message>
+
+    <br>
+        <br><br>
+        <p-button label="Search" icon="pi pi-search" [loading]="loading[0]"  type="submit" value="submit" ></p-button>
+       
+        
+<p-toast 
+position="top-right" 
+key="topright" 
+>
+</p-toast>
+
+        
+<p-toast 
+position="bottom-center" 
+key="bottomcenter" life='100000'
+>
+</p-toast>
+
+<p-messages ></p-messages>

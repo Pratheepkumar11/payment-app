@@ -1,0 +1,47 @@
+<div style="text-align: center">
+    <form [formGroup]=" withdrawfunds"  (ngSubmit)="onSubmit(withdrawfunds.value)">
+        <h6 class="display-6">WITHDRAW AMOUNT</h6><br>
+
+        <div class="p-inputgroup"> 
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+              </span>       
+            <span class="p-float-label">
+                <input type="text" id="inputgroup" pInputText   formControlName="id" [(ngModel)]="ia"  />
+                <label for="inputgroup">User Id</label>
+              </span>
+             
+            
+               
+        </div>
+        <p-message severity="error" [text]="withdrawfunds.controls['id'].errors['required'] ? 'id is required' : withdrawfunds.controls['id'].errors['minlength'] ? 'Must be longer than 2' : withdrawfunds.controls['id'].errors['pattern'] ? 'Numbers only' :withdrawfunds.controls['id'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+        *ngIf="!withdrawfunds.controls['id'].valid&&withdrawfunds.controls['id'].touched" ></p-message>
+
+    <br>
+        <br><br>
+<div class="p-inputgroup">
+    <span class="p-inputgroup-addon">
+        <i class="pi pi-paypal"></i>
+      </span>
+    <span class="p-float-label">
+    <p-inputNumber mode="currency" currency="INR" locale="en-IN" ngDefaultControl formControlName="balance"></p-inputNumber>
+    <label for="inputtext" ></label>
+</span>
+
+</div>
+<p-message severity="error" [text]="withdrawfunds.controls['balance'].errors['required'] ? 'Amount is required' : withdrawfunds.controls['balance'].errors['min'] ? 'Amount Must be more than 500rs' :withdrawfunds.controls['balance'].errors['pattern'] ? 'Numbers only' : ''" 
+*ngIf="!withdrawfunds.controls['balance'].valid&&withdrawfunds.controls['balance'].touched" ></p-message>           
+<br>
+<br>
+<button pButton pRipple  label="withdraw Amount" class="p-button-rounded p-button-success" type="submit" value="submit" [disabled]="!withdrawfunds.valid"></button>
+    </form>
+</div>
+
+
+<p-toast 
+      position="top-right" 
+      key="topright" 
+      >
+</p-toast>
+
+

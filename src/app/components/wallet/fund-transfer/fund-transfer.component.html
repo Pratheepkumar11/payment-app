@@ -1,0 +1,54 @@
+<div style="text-align: center">
+      <form [formGroup]=" addfunds"  (ngSubmit)="onSubmit(addfunds.value)" >
+          <h5 class="display-5">Tranfer Amount</h5><br>
+  
+          <div class="p-inputgroup"> 
+              <span class="p-inputgroup-addon">
+                  <i class="pi pi-user"></i>
+                </span>       
+              <span class="p-float-label">
+                  <input type="text" id="inputgroup" pInputText formControlName="idone" />
+                  <label for="inputgroup">Your User Id</label>
+                </span>
+          </div>
+          <p-message severity="error" [text]="addfunds.controls['idone'].errors['required'] ? 'Sender id is required' : addfunds.controls['idone'].errors['minlength'] ? 'Must be longer than 2' : addfunds.controls['idone'].errors['pattern'] ? 'Numbers only' :addfunds.controls['idone'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+          *ngIf="!addfunds.controls['idone'].valid&&addfunds.controls['idone'].touched" ></p-message>
+          <br><br>
+          <div class="p-inputgroup"> 
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-user"></i>
+              </span>       
+            <span class="p-float-label">
+                <input type="text" id="inputgroup" pInputText formControlName="idtwo"/>
+                <label for="inputgroup">To User Id</label>
+              </span>
+        </div>
+        <p-message severity="error" [text]="addfunds.controls['idtwo'].errors['required'] ? 'Reciver id is required' : addfunds.controls['idtwo'].errors['minlength'] ? 'Must be longer than 2' : addfunds.controls['idtwo'].errors['pattern'] ? 'Numbers only' :addfunds.controls['idtwo'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+          *ngIf="!addfunds.controls['idtwo'].valid&&addfunds.controls['idtwo'].touched" ></p-message>
+        <br><br>
+  <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+          <i class="pi pi-paypal"></i>
+        </span>
+      <span class="p-float-label">
+      <p-inputNumber mode="currency" currency="INR" locale="en-IN"    formControlName="amount"></p-inputNumber>
+      <label for="inputtext" ></label>
+  </span>
+  </div>
+  <p-message severity="error" [text]="addfunds.controls['amount'].errors['required'] ? 'Amount is required' : addfunds.controls['amount'].errors['min'] ? 'Amount Must be more than 500rs' :addfunds.controls['amount'].errors['pattern'] ? 'Numbers only' : ''" 
+*ngIf="!addfunds.controls['amount'].valid&&addfunds.controls['amount'].touched" ></p-message> 
+  <br>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-button type="submit" value="submit" [disabled]="!addfunds.valid" icon="pi pi-check" label="Confirm"></p-button>
+
+
+
+
+
+
+<p-toast 
+      position="top-right" 
+      key="topright" 
+      life='50000'>
+</p-toast>

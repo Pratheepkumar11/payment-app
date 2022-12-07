@@ -1,0 +1,66 @@
+
+<div style="text-align: center">
+        <form  [formGroup]=" registrationForm"  (ngSubmit)="onSubmit(registrationForm.value)">
+            
+            <h1 class="display-1">Register</h1><br>
+
+            
+            <div class="p-inputgroup " >
+                
+                <span class="p-inputgroup-addon"><i class="pi pi-star-fill"></i></span>
+                <input type="text" pInputText placeholder="User Id"  formControlName="id"  >
+            </div>
+                <p-message severity="error" [text]="registrationForm.controls['id'].errors['required'] ? 'id is required' : registrationForm.controls['id'].errors['minlength'] ? 'Must be longer than 2' : registrationForm.controls['id'].errors['pattern'] ? 'Numbers only' :registrationForm.controls['id'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+                *ngIf="!registrationForm.controls['id'].valid&&registrationForm.controls['id'].touched" ></p-message>
+        
+            <br>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="name" formControlName="name"  >
+            </div>
+                <p-message severity="error" [text]="registrationForm.controls['name'].errors['required'] ? 'name is required' : registrationForm.controls['name'].errors['minlength'] ? 'Must be longer than 5 characters' : ''" 
+                *ngIf="!registrationForm.controls['name'].valid&&registrationForm.controls['name'].touched" ></p-message>        
+            <br>
+
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-eye-slash"></i></span>
+                <input type="text" pInputText placeholder="User Password" formControlName="password" >   </div>
+                <p-message severity="error" [text]="registrationForm.controls['password'].errors['required'] ? 'Password is required' : registrationForm.controls['password'].errors['minlength'] ? 'Must be longer than 2' : registrationForm.controls['password'].errors['strong'] ? ' Must have at least one number, one lowercase and one uppercase letter.' :registrationForm.controls['password'].errors['maxlength'] ? 'Must be smaller than 5' :''" 
+                *ngIf="!registrationForm.controls['password'].valid&&registrationForm.controls['password'].touched" ></p-message>    
+            <br>
+
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-paypal"></i></span>
+                <input type="text" pInputText placeholder="Initial Amount"  formControlName="balance"  >
+            </div>
+                <p-message severity="error" [text]="registrationForm.controls['balance'].errors['required'] ? 'balance is required' : registrationForm.controls['balance'].errors['min'] ? 'balance Must be more than 500rs' :registrationForm.controls['balance'].errors['pattern'] ? 'Numbers only' : ''" 
+                *ngIf="!registrationForm.controls['balance'].valid&&registrationForm.controls['balance'].touched" ></p-message>           
+            <br>
+
+          <div>
+<button pButton label="sign up" icon="pi pi-user-plus" iconPos="left" type="submit" value="submit" [disabled]="!registrationForm.valid"></button>
+
+</div>
+</form>
+
+</div>
+       
+
+<p-toast 
+      position="top-right" 
+      key="topright" 
+      >
+</p-toast>
+
+
+            
+       
+ 
+
+ 
+        
+
+
+
+
+
